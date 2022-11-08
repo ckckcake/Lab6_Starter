@@ -121,13 +121,15 @@ class RecipeCard extends HTMLElement {
     if (!data) return;
 
     // A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
-    console.log(this.shadowRoot);
-    let articleSelect = this.shadowRoot.querySelectorAll("article");
+    let sDOM = this.shadowRoot;
+    //console.log("this is child node" + sDOM.childNodes);
+    //sDOM.childNodes
+    let articleSelect = sDOM.childNodes[1];
     // A7. TODO - Set the contents of the <article> with the <article> template given in
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (tempalte strings) and element.innerHTML for this.
-    articleSelect.textContent = `
+    articleSelect.innerHTML = `
     <article>
     <img src="https://link-to-article.com/recipe-thumbnail.jpg"
     alt="Recipe Title">
@@ -146,10 +148,11 @@ class RecipeCard extends HTMLElement {
     </p>
   </article>
   `;
+  //console.log("article select" + articleSelect.innerHTML);
   }
+  
 }
 
 // A8. TODO - Define the Class as a customElement so that you can create
 //           'recipe-card' elements
-
 customElements.define('recipe-card', RecipeCard);

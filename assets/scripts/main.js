@@ -41,19 +41,21 @@ function getRecipesFromStorage() {
 function addRecipesToDocument(recipes) {
   // A10. TODO - Get a reference to the <main> element
   //console.log(recipes);
-  let mainSelect = document.querySelectorAll("main");
-  console.log("this is main");
-  console.log(mainSelect);
-  //console.log(document.querySelectorAll('.main'));
+  let mainSelect = document.querySelectorAll('main');
+  //console.log(mainSelect);
   // A11. TODO - Loop through each of the recipes in the passed in array,
   //            create a <recipe-card> element for each one, and populate
   //            each <recipe-card> with that recipe data using element.data = ...
   //            Append each element to <main>
-  recipes.forEach(element => {
-    let recipeCard = document.createElement('recipe-card'); // Calls constructor()
-    recipeCard.data = { recipe: element } // Calls set data({ foo: 'bar' })
-    mainSelect.innerHTML += (recipeCard);
-  });
+
+
+  // recipes.forEach(element => {
+  //   let recipeCard = document.createElement('recipe-card'); // Calls constructor()
+    
+  //   console.log(element, index);
+  //   recipeCard.data = { element[] } // Calls set data({ foo: 'bar' })
+  //   //mainSelect.innerHTML += (recipeCard);
+  // });
 }
 
 /**
