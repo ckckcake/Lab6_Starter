@@ -25,8 +25,7 @@ function getRecipesFromStorage() {
   //           header. It is possible in only a single line, but should
   //           be no more than a few lines.
   let tempArray = localStorage.getItem('recipes');
-  var recipeArray = (new Function("return [" + tempArray+ "];")());
-  
+  var recipeArray = (new Function("return [" + tempArray+ "];")()); 
   //console.log(recipeArray);
   return recipeArray;
 }
@@ -47,15 +46,16 @@ function addRecipesToDocument(recipes) {
   //            create a <recipe-card> element for each one, and populate
   //            each <recipe-card> with that recipe data using element.data = ...
   //            Append each element to <main>
-
-
-  // recipes.forEach(element => {
-  //   let recipeCard = document.createElement('recipe-card'); // Calls constructor()
-    
-  //   console.log(element, index);
-  //   recipeCard.data = { element[] } // Calls set data({ foo: 'bar' })
-  //   //mainSelect.innerHTML += (recipeCard);
-  // });
+  recipes.forEach(element => {
+    let recipeCard = document.createElement('recipe-card'); // Calls constructor()
+    //console.log(element);
+    console.log("before");
+    console.log(recipeCard);
+    recipeCard.data = { data : element}; // Calls set data({ foo: 'bar' })
+    console.log("after");
+    console.log(recipeCard);
+    mainSelect.innerHTML += (recipeCard);
+  });
 }
 
 /**

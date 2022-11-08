@@ -148,7 +148,7 @@ class RecipeCard extends HTMLElement {
     </p>
   </article>
   `;
-  //console.log("article select" + articleSelect.innerHTML);
+  //console.log("test" + articleSelect.innerHTML);
   }
   
 }
