@@ -5,7 +5,6 @@ class RecipeCard extends HTMLElement {
   // the element is written into the DOM directly as <recipe-card>
   constructor() {
     super(); // Inheret everything from HTMLElement
-
     // EXPOSE - START (All expose numbers start with A)
     // A1. TODO - Attach the shadow DOM to this Web Component (leave the mode open)
     let sDOM = this.attachShadow({mode:'open'});
@@ -14,7 +13,7 @@ class RecipeCard extends HTMLElement {
     // A3. TODO - Create a style element - This will hold all of the styles for the Web Component
     let styleEl = document.createElement('style');
     // A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made
-     styleEl.innerHTML = `
+     styleEl.textContent = `
      * {
       font-family: sans-serif;
       margin: 0;
@@ -90,7 +89,7 @@ class RecipeCard extends HTMLElement {
       color: #70757A;
       font-size: 12px;
     }
-    `
+    `;
     // A5. TODO - Append the <style> and <article> elements to the Shadow DOM
     sDOM.append(styleEl);
     sDOM.append(articleEl);
@@ -109,7 +108,7 @@ class RecipeCard extends HTMLElement {
    *                          "imgSrc": "string",
    *                          "imgAlt": "string",
    *                          "titleLnk": "string",
-   *                          "titleTxt": "string",
+   *                          "titletxt": "string",
    *                          "organization": "string",
    *                          "rating": number,
    *                          "numRatings": number,
@@ -122,13 +121,35 @@ class RecipeCard extends HTMLElement {
     if (!data) return;
 
     // A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
-    let articleSelect = DocumentFragment.querySelector('.article');
+    console.log(this.shadowRoot);
+    let articleSelect = this.shadowRoot.querySelectorAll("article");
     // A7. TODO - Set the contents of the <article> with the <article> template given in
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (tempalte strings) and element.innerHTML for this.
+    articleSelect.textContent = `
+    <article>
+    <img src="https://link-to-article.com/recipe-thumbnail.jpg"
+    alt="Recipe Title">
+    <p class="title">
+    <a href="https://link-to-article.com">Title</a>
+    </p>
+    <p class="organization">The Chef's Organization</p>
+    <div class="rating">
+    <span>5</span>
+    <img src="/assets/images/icons/5-star.svg" alt="5 stars">
+    <span>(500)</span>
+    </div>
+    <time>50 min</time>
+    <p class="ingredients">
+    Comma, Separated, List, of, Ingredients
+    </p>
+  </article>
+  `;
   }
 }
 
 // A8. TODO - Define the Class as a customElement so that you can create
 //           'recipe-card' elements
+
+customElements.define('recipe-card', RecipeCard);
