@@ -48,13 +48,11 @@ function addRecipesToDocument(recipes) {
   //            Append each element to <main>
   recipes.forEach(element => {
     let recipeCard = document.createElement('recipe-card'); // Calls constructor()
-    //console.log(element);
-    console.log("before");
+  
+    console.log(element);
+    recipeCard.data = {innerHTML : element};
     console.log(recipeCard);
-    recipeCard.data = { data : element}; // Calls set data({ foo: 'bar' })
-    console.log("after");
-    console.log(recipeCard);
-    mainSelect.innerHTML += (recipeCard);
+    mainSelect.innerHTML += element;
   });
 }
 
